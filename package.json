@@ -4,21 +4,16 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "rest:dev": "DEBUG=express-graphql-api:* nodemon ./bin/www",
-    "dev": "DEBUG=express-graphql-api:* nodemon app.js",
+    "dev": "DEBUG=express-graphql-api:* nodemon ./bin/www",
     "test": "mocha"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1",
     "graphql-tools": "^4.0.4",
-    "http-errors": "~1.6.3",
-    "mongoose": "^5.5.11",
-    "morgan": "~1.9.1"
+    "mongoose": "^5.5.11"
   },
   "devDependencies": {
     "chai": "^4.2.0",

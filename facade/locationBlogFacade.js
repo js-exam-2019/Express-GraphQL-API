@@ -9,7 +9,7 @@ const getByID = async (_id) => {
 };
 
 const getByInfo = async (info) => {
-	return await LocationBlog.findOne({ info }).exec();
+	return await LocationBlog.find({ info }).exec();
 };
 
 const add = async (info, pos, author) => {

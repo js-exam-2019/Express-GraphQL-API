@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 
-let connect = require('../mongoConnector').connect;
-let disconnect = require('../mongoConnector').disconnect;
-let connection = require('../mongoConnections').test;
+let connect = require('../data/mongoConnector').connect;
+let disconnect = require('../data/mongoConnector').disconnect;
+let connection = require('../data/mongoConnections').test;
 
 let User = require('../models/user');
 let userFacade = require('../facade/userFacade');
@@ -60,14 +60,13 @@ describe('Testing Location Blog Facade', () => {
 	});
 	
 	it('should add a location blog', async () => {
-		const location = await locationBlogFacade.getByInfo('Location A');
-		expect(location.info).to.be.equal('Location A');
+		const locations = await locationBlogFacade.getByInfo('Location A');
+		expect(locations).not.to.be.empty;
 	});
 
 	it('should add a location blog', async () => {
-		let { _id } = await locationBlogFacade.getByInfo('Location A');
-        let location = await locationBlogFacade.getByID(_id);
-        expect(String(location._id)).to.be.equal(String(_id));
+		let locations = await locationBlogFacade.getByInfo('Location A');
+		expect(locations).not.to.be.empty;
 	});
 
 	it('should add a location blog', async () => {
@@ -82,9 +81,9 @@ describe('Testing Location Blog Facade', () => {
 
 	it('should add a like to a location blog', async () => {
 		const user = await userFacade.getByUsername('marc');
-		const location = await locationBlogFacade.getByInfo('Location A');
-		await locationBlogFacade.like(user._id, location._id);
+		const locations = await locationBlogFacade.getByInfo('Location A');
+		await locationBlogFacade.like(user._id, locations[0]._id);
 		const res = await locationBlogFacade.getByInfo('Location A');
-		expect(res.likedBy.length).to.be.equal(1);
+		expect(res[0].likedBy.length).to.be.equal(1);
 	});
 });

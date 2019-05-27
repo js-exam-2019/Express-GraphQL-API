@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 
-let connect = require('../mongoConnector').connect;
-let disconnect = require('../mongoConnector').disconnect;
-let connection = require('../mongoConnections').test;
+let connect = require('../data/mongoConnector').connect;
+let disconnect = require('../data/mongoConnector').disconnect;
+let connection = require('../data/mongoConnections').test;
 
 let User = require('../models/user');
 let Position = require('../models/position');
@@ -46,8 +46,7 @@ describe('Testing User Facade', () => {
 	}); */
 
 	it('Should find all friends nearby', async function() {
-        let friends = await loginFacade.login('noah', 'test', 10.00005, 10.00005, 5);
-        console.log(friends)
+		let friends = await loginFacade.login('noah', 'test', 10.00005, 10.00005, 5);
 		expect(friends[0].username).to.be.equal('marc');
 	});
 });

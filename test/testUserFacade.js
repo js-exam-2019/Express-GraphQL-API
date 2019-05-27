@@ -1,8 +1,8 @@
 const expect = require('chai').expect;
 
-let connect = require('../mongoConnector').connect;
-let disconnect = require('../mongoConnector').disconnect;
-let connection = require('../mongoConnections').test;
+let connect = require('../data/mongoConnector').connect;
+let disconnect = require('../data/mongoConnector').disconnect;
+let connection = require('../data/mongoConnections').test;
 
 let User = require('../models/user');
 let userFacade = require('../facade/userFacade');
